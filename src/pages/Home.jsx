@@ -24,14 +24,29 @@ const Home = () => {
   console.log(tutorials);
 
   //!POST(create)
-  const addTutorial = (tutorial) => {
-    console.log("add");
+  const addTutorial = async(tutorial) => {
+    try {
+      await axios.post(url, tutorial);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+    
   };
+
+  const deleteTutorial = async(id)=>{
+    try {
+      await axios.delete(`${url}/${id}`);
+    } catch (error) {
+      console.log(error)
+    }
+    getTutorials(); 
+  }
 
   return (
     <>
       <AddTutorial addTutorial={addTutorial} />
-      <TutorialList tutorials={tutorials} />
+      <TutorialList tutorials={tutorials} deleteTutorial = {deleteTutorial} />
     </>
   );
 }
