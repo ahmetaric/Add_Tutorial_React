@@ -1,20 +1,8 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
-const TutorialList = () => {
-  const tutorials = [
-    {
-      id: 1,
-      title: "React JS",
-      description: "React is a JS-library for UI Design",
-    },
+const TutorialList = ({tutorials}) => {
 
-    {
-      id: 2,
-      title: "HTML",
-      description: "HTML is a markup language",
-    },
-  ];
 
   return (
     <div className="container mt-4">
