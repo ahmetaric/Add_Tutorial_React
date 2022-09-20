@@ -24,29 +24,43 @@ const Home = () => {
   console.log(tutorials);
 
   //!POST(create)
-  const addTutorial = async(tutorial) => {
+  const addTutorial = async (tutorial) => {
     try {
       await axios.post(url, tutorial);
     } catch (error) {
       console.log(error);
     }
     getTutorials();
-    
   };
 
-  const deleteTutorial = async(id)=>{
+  //!DELETE(delete)
+  const deleteTutorial = async (id) => {
     try {
       await axios.delete(`${url}/${id}`);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    getTutorials(); 
+    getTutorials();
+  };
+
+  //!update(PUT:whole update,PATCH:partially)
+
+  const editTutorial = async(id,title,desc)=>{
+
+   const filtered = tutorials.filter((tutor) => tutor.id === id).map(()=>({title:title,description:desc}))
+   console.log(filtered);
+    try {
+      await axios.put(`${url}/${id}`,filtered[0]);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
   }
 
   return (
     <>
       <AddTutorial addTutorial={addTutorial} />
-      <TutorialList tutorials={tutorials} deleteTutorial = {deleteTutorial} />
+      <TutorialList tutorials={tutorials} deleteTutorial={deleteTutorial} editTutorial={editTutorial}/>
     </>
   );
 }

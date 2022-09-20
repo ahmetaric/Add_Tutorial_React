@@ -1,7 +1,7 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 
-const TutorialList = ({tutorials,deleteTutorial}) => {
+const TutorialList = ({tutorials,deleteTutorial,editTutorial}) => {
 
 
   return (
@@ -33,11 +33,12 @@ const TutorialList = ({tutorials,deleteTutorial}) => {
                   <FaEdit
                     size={20}
                     className="me-2 text-warning cursor-pointer"
+                    onClick={() => editTutorial(id,"CSS","style")}
                   />
                   <AiFillDelete
                     size={22}
                     className="text-danger cursor-pointer"
-                    onClick={()=>deleteTutorial(id)}
+                    onClick={() => deleteTutorial(id)}
                   />
                 </td>
               </tr>
