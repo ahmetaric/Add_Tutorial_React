@@ -1,8 +1,16 @@
+import { useState } from "react";
+
 const AddTutorial = () => {
+    const [title, setTitle] = useState("")
+    const [desc, setDesc] = useState("")
+
+    const handleSubmit = (e)=>{
+
+    }
   return (
     <div className="container text-center mt-4">
       <h1 className="display-6 text-danger">Add Your Tutorial</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title
@@ -12,6 +20,9 @@ const AddTutorial = () => {
             className="form-control"
             id="title"
             placeholder="Enter your title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
 
@@ -19,7 +30,14 @@ const AddTutorial = () => {
           <label htmlFor="desc" className="form-label">
             Description
           </label>
-          <input type="text" className="form-control" id="desc" />
+          <input
+            type="text"
+            className="form-control"
+            id="desc"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+            required
+          />
         </div>
 
         <button type="submit" className="btn btn-danger mb-4">
