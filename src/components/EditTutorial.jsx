@@ -13,8 +13,7 @@ const EditTutorial = ({editTutorial,editItem}) => {
 
     const handleSave = (e)=>{
        e.preventDefault();
-       editTutorial({id:id,
-       title:title,description:desc})
+       editTutorial(id,title,desc)
        setTitle("");
        setDesc("");
     }
@@ -41,7 +40,7 @@ const EditTutorial = ({editTutorial,editItem}) => {
                 className="form-control"
                 id="title"
                 placeholder="Enter your title"
-                value={title}
+                value={title || ""}
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
@@ -55,7 +54,7 @@ const EditTutorial = ({editTutorial,editItem}) => {
                 type="text"
                 className="form-control"
                 id="desc"
-                value={desc}
+                value={desc || ""}
                 onChange={(e) => setDesc(e.target.value)}
                 required
               />
